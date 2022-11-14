@@ -1,0 +1,7 @@
+.footer {
+    color: false;
+    padding: 2rem 1.2rem 3rem;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+}
