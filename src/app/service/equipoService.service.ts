@@ -3,21 +3,30 @@ import { Injectable } from '@angular/core';
 import { REST_SERVER_URL } from './configuracion';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EquipoServiceService {
-  public team: any[] = []
+  public team: any[] = [];
 
-constructor(private httpClient: HttpClient) {
-  this.getEquipos()
- }
+  constructor(private httpClient: HttpClient) {}
 
-
- private getEquipos() {
-  this.httpClient.get('http://localhost:3000/equipos').subscribe(
-    {next: (res : any) =>{ this.team = res},
-    error: (e) => console.error(e)}
-  )
-
-}
+  getEquipos() {
+    this.httpClient.get('http://localhost:3000/equipos').subscribe({
+      next: (res: any) => {
+        this.team = res;
+      },
+      error: (e) => console.error(e),
+    });
+  }
+  public deleteEquipo(id: number) {
+    return this.httpClient
+      .delete('http://localhost:3000/eliminar/' + id)
+      .subscribe(
+        {next:  res => {
+          console.log("equipo eliminado");
+          this.getEquipos();
+        },
+      error: (e) => console.error(e)}
+      );
+  }
 }

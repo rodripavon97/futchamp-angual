@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,23 +1,30 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th><abbr title="Position">Pos</abbr></th>
-      <th>Equipo</th>
-      <th><abbr title="Played">Ciudad</abbr></th>
-      <th><abbr title="Won">Estadio</abbr></th>
-      <th><abbr title="Drawn">Fecha de Creacion</abbr></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let equipos of dataServices.team">
-      <th>{{equipos.id}}</th>
-      <td>{{equipos.nombre}}
-      </td>
-      <td>{{equipos.ciudad}}</td>
-      <td>{{equipos.estadio}}</td>
-      <td>{{equipos.fecha | date: 'dd/MM/yyyy'}}</td>
-      <td></td>
-    
-    </tr>
-  </tbody>
-</table>
+<div class="container is-fullheight">
+  <div class="column is-half is-offset-one-quarter">
+    <table class="table mx-auto has-background-success">
+      <thead>
+        <tr>
+          <th><abbr title="Position">Pos</abbr></th>
+          <th>Equipo</th>
+          <th><abbr title="Played">Ciudad</abbr></th>
+          <th><abbr title="Won">Estadio</abbr></th>
+          <th><abbr title="Drawn">Fecha de Creacion</abbr></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipos of dataServices.team; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ equipos.nombre }}</td>
+          <td>{{ equipos.ciudad }}</td>
+          <td>{{ equipos.estadio }}</td>
+          <td>{{ equipos.fecha | date: "dd/MM/yyyy" }}</td>
+          <fa-icon
+            (click)="dataServices.deleteEquipo(equipos.idEquipo)"
+            [icon]="faTrash"
+          >
+          </fa-icon>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
