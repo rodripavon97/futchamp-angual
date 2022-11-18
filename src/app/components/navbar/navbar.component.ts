@@ -19,4 +19,8 @@ export class NavbarComponent implements OnInit {
   navegarAHome() {
     this.router.navigate(['/home'])
   }
+
+  navegarAEquipo() {
+    this.router.navigate(['/equipo'])
+  }
 }
