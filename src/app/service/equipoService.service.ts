@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { REST_SERVER_URL } from './configuracion';
 
 @Injectable({
@@ -29,4 +30,21 @@ export class EquipoServiceService {
       error: (e) => console.error(e)}
       );
   }
+
+  public guardarEquipo(nombre_: string, ciudad_:string, estadio_:string, fecha_:Date) {
+    this.httpClient.post('http://localhost:3000/enviar', {
+      nombre: nombre_,
+      ciudad: ciudad_,
+      estadio: estadio_,
+      fecha: fecha_
+    }).subscribe()
+  }
 }
+
+export interface EquipoTemplate {
+  idEquipo: number,
+  nombre?: string,
+  ciudad?: string,
+  estadio?: string,
+  fecha?: Date
+};

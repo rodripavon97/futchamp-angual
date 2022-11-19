@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { EquipoServiceService, EquipoTemplate } from './../../service/equipoService.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  idEquipo = 0
+  nombre = ""
+  ciudad=""
+  estadio = ""
+  fecha= new Date()
+  
+  constructor(public dataService : EquipoServiceService, private router : Router) { }
 
   ngOnInit() {
+  }
+  
+  subirDatos() {
+    this.dataService.guardarEquipo(this.nombre, this.ciudad,this.estadio,this.fecha)
+    this.navegarAEquipos()
+  }
+  navegarAEquipos():void {
+    this.router.navigate(['/equipo'])
   }
 
 }
