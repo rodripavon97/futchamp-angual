@@ -1,7 +1,7 @@
 .footer {
     color: false;
     padding: 2rem 1.2rem 3rem;
-    position: sticky;
-    width: 100vw;
+    position: absolute;
+    width: 100%;
     bottom: 0;
 }
